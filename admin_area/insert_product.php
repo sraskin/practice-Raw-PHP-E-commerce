@@ -47,8 +47,7 @@ include "../includes/db.php";
             <div class="form-group row">
                 <label for="product_image" class="col-xs-2 col-form-label">Product Image</label>
                 <div class="col-xs-10">
-                    <input type="file" name="product_image" class="form-control-file" id="product_title"
-                           placeholder="Enter name" required>
+                    <input type="file" name="product_image" class="form-control-file" id="product_image" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -67,14 +66,13 @@ include "../includes/db.php";
                 </div>
             </div>
             <div class="form-group row">
-                <label for="product_keyword" class="col-xs-2 col-form-label">Product Keyword</label>
+                <label for="product_keywords" class="col-xs-2 col-form-label">Product Keywords</label>
                 <div class="col-xs-10">
-                    <input type="text" name="product_keyword" class="form-control" id="product_keyword"
-                           placeholder="Enter Product Keyword">
+                    <input type="text" name="product_keywords" class="form-control" id="product_keywords"
+                           placeholder="Enter Product Keywords">
                 </div>
             </div>
             <button type="submit" class="btn btn-success btn-lg btn-block" name="insert_post">Submit</button>
-
         </form>
 
         <?php
@@ -84,20 +82,19 @@ include "../includes/db.php";
             $product_brand = $_POST['product_brand'];
             $product_price = $_POST['product_price'];
             $product_desc = $_POST['product_desc'];
-            $product_keyword = $_POST['product_keyword'];
+            $product_keywords = $_POST['product_keywords'];
 
             $product_image = $_FILES['product_image']['name'];
             $product_image_tmp = $_FILES['product_image']['tmp_name'];
             move_uploaded_file($product_image_tmp, "../images/product_images/$product_image");
 
-            $query = "insert into products(product_cat,product_brand,product_title,product_price,product_desc,product_image,product_keywords) values ('$product_cat','$product_brand',' $product_title','$product_price','$product_desc','$product_image','$product_keyword')";
-            $insert_product = mysqli_query($con, $query);
+            $query = "insert into products(product_id,product_cat,product_brand,product_title,product_price,product_desc,product_image,product_keywords) values('','$product_cat','$product_brand','$product_title','$product_price','$product_desc','$product_image','$product_keywords')";
+            $insert_product = mysqli_query($con, $query) or die(mysqli_error($con));
 
-            if ($insert_product){
+            if ($insert_product) {
                 echo "<script>alert('product has been inserted')</script>";
                 echo "<script>window.open('insert_product.php','_self')</script>";
             }
-
         }
         ?>
     </div>
