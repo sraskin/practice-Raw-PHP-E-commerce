@@ -31,9 +31,7 @@ footer, header, hgroup, menu, nav, section {
 }
 #content_area{
     float: right;
-    background: pink;
-    width: 1125px;
-    height: 580px;
+
 }
 #sidebar{
     width: 223px;

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php include('functions/functions.php'); ?>
+<?php
+include "functions/functions.php";
+?>
 <html>
 <head>
     <title>Practice-ECommerce</title>
@@ -9,10 +11,12 @@
             integrity="sha384-VjEeINv9OSwtWFLAtmc4JCtEJXXBub00gtSnszmspDLCtC0I4z4nqz7rEFbIZLLU"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/style.css" media="all"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 </head>
 <body>
 <!--Nav start-->
-<nav class="navbar navbar-light">
+<nav class="navbar navbar-dark bg-primary">
     <a class="navbar-brand" href="#">Practice-ECommerce</a>
     <ul class="nav navbar-nav">
         <li class="nav-item active">
@@ -39,6 +43,13 @@
         <button class="btn btn-outline-success" type="submit" name="search">Search</button>
     </form>
 </nav>
+<nav class="navbar navbar-light bg-faded">
+    <div class="container pull-xs-right">
+        <a class="fa fa-user" href="#">&nbsp;Welcome User!</a>
+        &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+        <a class="fa fa-shopping-cart" href="#">&nbsp;Cart</a>
+    </div>
+</nav>
 <!--Nav end-->
 
 <!--Main container start-->
@@ -52,8 +63,16 @@
                 <?php get_brands(); ?>
             </ul>
         </div>
-        <div class="col-md-10" id="content_area">col-md-4</div>
+        <div class="col-md-10" id="content_area">
+            <div class="container">
+                <div class="row">
+                    <?php get_products(); ?>
+                </div>
+            </div>
+
+        </div>
     </div>
+</div>
 </div>
 <!--Main container end-->
 
