@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include "functions/functions.php";
+include "includes/db.php";
 ?>
 <html>
 <head>
@@ -13,22 +14,6 @@ include "functions/functions.php";
     <link rel="stylesheet" href="styles/style.css" media="all"/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <script>
-        $( function() {
-            var availableTags = [
-                <?php get_tags(); ?>
-            ];
-            $( "#tags" ).autocomplete({
-                source: availableTags
-            });
-        } );
-    </script>
-
 </head>
 <body>
 <!--Nav start-->
@@ -55,8 +40,8 @@ include "functions/functions.php";
         </li>
     </ul>
     <form class="form-inline pull-xs-right" method="get" action="results.php" enctype="multipart/form-data">
-        <input class="form-control" id="tags"type="text" name="user_query" placeholder="Search a Product">
-        <button class="btn btn-success" type="submit" name="search">Search</button>
+        <input class="form-control" type="text" name="user_query" placeholder="Search a Product">
+        <button class="btn btn-outline-success" type="submit" name="search">Search</button>
     </form>
 </nav>
 <nav class="navbar navbar-light bg-faded">
@@ -82,9 +67,9 @@ include "functions/functions.php";
         <div class="col-md-10" id="content_area">
             <div class="container">
                 <div class="row">
-                    <?php get_products(); ?>
-                    <?php get_product_cat(); ?>
-                    <?php get_product_brand(); ?>
+                    <?php
+                    get_product_details();
+                    ?>
                 </div>
             </div>
 
