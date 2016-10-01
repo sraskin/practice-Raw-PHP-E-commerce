@@ -198,4 +198,37 @@ function get_tags()
     }
 }
 
+function get_search_results()
+{
+    if (isset($_GET['search'])) {
+        global $con;
+
+        $search_query = $_GET['user_query'];
+
+        $query = "SELECT * FROM products where product_keywords like '%$search_query%'";
+        $result = mysqli_query($con, $query) or die ("Couldn't execute query");
+        while ($row = mysqli_fetch_assoc($result)) {
+            extract($row);
+            echo "
+        <div class=\"col-md-3\">
+                        <div class=\"card\">
+                            <img class=\"card-img-top\" src=\"images/product_images/$product_image\" width=\"243px\" height=\"180px\" alt=\"product_image\">
+                            <div class=\"card-block\">
+                                <h4 class=\"card-title\">$product_title</h4>
+                                <h4 class=\card-title\">$product_price BDT</h4>
+                                <p class=\"card-text\">$product_desc</p>
+                                <div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">
+                                    <a href=\"details.php?id=$product_id\" class=\"btn btn-info\">Details</a>
+                                    <a href=\"index.php?id=$product_id\" class=\"btn btn-success\">Add to cart</a>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+        ";
+        }
+    }
+}
+
 ?>

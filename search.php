@@ -82,9 +82,8 @@ include "functions/functions.php";
         <div class="col-md-10" id="content_area">
             <div class="container">
                 <div class="row">
-                    <?php get_products(); ?>
-                    <?php get_product_cat(); ?>
-                    <?php get_product_brand(); ?>
+                    <?php get_search_results(); ?>
+                </div>
             </div>
 
         </div>
